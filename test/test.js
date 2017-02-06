@@ -92,7 +92,7 @@ describe('consul-kv-sync', () => {
           recurse: true
         })
         .then(() => {
-          return execute('node ../consul-kv-sync.js ./one.json ./two.json');
+          return execute('node ../consul-kv-sync.js ./one.json ./two.json ./three.yaml');
         }).then(() => {
           return client.kv.getAsync({
             key: 'service',
@@ -110,6 +110,15 @@ describe('consul-kv-sync', () => {
 
         expect(item).to.be.ok;
         expect(item.Value).to.eql('value 2');
+      });
+
+      it('should set value to correct value from a yaml file', () => {
+        let item = response.find((item) => {
+          return item.Key === 'service/yaml';
+        });
+
+        expect(item).to.be.ok;
+        expect(item.Value).to.eql('it works');
       });
 
       it('should set overridden value to correct value', () => {

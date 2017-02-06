@@ -31,7 +31,8 @@
     "commander": "^2.9.0",
     "consul": "^0.22.0",
     "json-ptr": "^0.3.1",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "yamljs": "^0.2.8"
   },
   "config": {
     "title": "Consul KV Sync",
